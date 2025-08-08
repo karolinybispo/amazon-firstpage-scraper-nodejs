@@ -6,13 +6,7 @@ const app = express(); // criando servidor express
 const PORT = 3000; // porta do servidor
 
 app.get("/api/scrape", async (req, res) => {
-  const keyword = req.query.keyword;
-
-  if (!keyword) {
-    return res.status(400).json({
-      error: "Keyword eh obrigatoria no parametro ?keyword=",
-    });
-  }
+  const keyword = req.query.keyword || "perfume"; //  keyword estática e dinamica. Se nao for passada keyword na url, usa "perfume".
 
   try {
     // Monta a URL da Amazon com a keyword
