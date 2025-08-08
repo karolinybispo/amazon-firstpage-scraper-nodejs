@@ -1,1 +1,1 @@
-# amazon-firstpage-scraper
+# amazon-firstpage-scraper-nodejs
