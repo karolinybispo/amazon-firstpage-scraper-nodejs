@@ -1,13 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Busca na amazon</title>
+</head>
+<body>
+  <h1>Insira o nome do produto que deseja ver da Amazon</h1>
+
+  <input id="inputKeyword" placeholder="Digite a palavra-chave" />
+  <button type="submit" id="buttonSend" >Buscar</button>
+
+  <!--Lembre que havera uma tabela contendo a div que recebera assincronicamente os dados do servidor. Ela apenas sera carregada e nao a pg toda-->
+  <div id="resultRequisicao"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>
