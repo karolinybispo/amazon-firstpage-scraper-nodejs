@@ -5,8 +5,14 @@ import { JSDOM } from "jsdom";
 const app = express(); // criando servidor express
 const PORT = 3000; // porta do servidor
 
+
+const cors = require("cors");
+app.use(cors({ origin: "*" }));
+
+
+
 app.get("/api/scrape", async (req, res) => {
-  const keyword = req.query.keyword || "perfume"; //  keyword estática e dinamica. Se nao for passada keyword na url, usa "perfume".
+  const keyword = req.query.keyword; 
 
   try {
     // Monta a URL da Amazon com a keyword
