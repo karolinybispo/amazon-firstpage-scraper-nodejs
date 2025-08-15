@@ -1,41 +1,70 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Busca na Amazon</title>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/src/style.css">
-</head>
-<body>
-  <!-- Estrutura HTML para usuario inserir keyword e enviar -->
-  <div class="container">
-    <h1>Bem-vindo!</h1>
-    <p class="subtitle">Qual produto da amazon deseja buscar hoje?</p>
-    <input id="inputKeyword" placeholder="Digite o produto..." />
-    <button type="submit" id="buttonSend">Buscar</button>
-     </div>
-
-    <!-- Tabela de resultados será inserida aqui -->
-    <table id="resultRequisicao">
-    <tr>
-      <td><strong>Título:</strong></td>
-      <td id="title"></td>
-    </tr>
-    <tr>
-      <td><strong>Rating:</strong></td>
-      <td id="rating"></td>
-    </tr>
-    <tr>
-      <td><strong>Reviews:</strong></td>
-      <td id="reviews"></td>
-    </tr>
-    <tr>
-      <td><strong>Image:</strong></td>
-      <td><img id="image" alt="imagem do produto"></td>
-    </tr>
-  </table>
-   
-  <script type="module" src="/src/main.js"></script>
+    <title>Document</title>
+    
+  </head>
+  <body>
+  <header class="header">
+    <span class="logo">AmazonSmart</span>
+    <div class="search-bar">
+      <input type="text" placeholder="Search" id="headerSearch" />
+    </div>
+  </header>
+  <main>
+    <section class="main-search">
+      <div class="main-search-box">
+        <input type="text" placeholder="Search for products" id="mainInput" />
+        <button id="mainButton">Buscar</button>
+      </div>
+    </section>
+    <section class="results">
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Reviews</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="img-placeholder"></div></td>
+            <td>Wireless Headphones</td>
+            <td>$49.99</td>
+            <td>4.5 stars</td>
+          </tr>
+          <tr>
+            <td><div class="img-placeholder"></div></td>
+            <td>Smart Watch</td>
+            <td>$199.99</td>
+            <td>4.2 stars</td>
+          </tr>
+          <tr>
+            <td><div class="img-placeholder"></div></td>
+            <td>Portable Bluetooth Speaker</td>
+            <td>$29.99</td>
+            <td>4.0 stars</td>
+          </tr>
+          <tr>
+            <td><div class="img-placeholder"></div></td>
+            <td>Fitness Tracker</td>
+            <td>$79.99</td>
+            <td>4.7 stars</td>
+          </tr>
+           <tr>
+            <td><div class="img-placeholder"></div></td>
+            <td>Electric Toothbrush</td>
+            <td>$59.99</td>
+            <td>4.3 stars</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
 </body>
 </html>
