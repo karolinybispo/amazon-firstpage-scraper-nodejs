@@ -4,6 +4,7 @@ import './style.css'
 
 const resultDiv = document.getElementById("resultRequisicao");
 const button = document.getElementById("buttonSend");
+const table = document.getElementById("resultRequisicao");
 
  button.addEventListener("click", function () {
     const input = document.getElementById("inputKeyword");
@@ -34,18 +35,20 @@ const button = document.getElementById("buttonSend");
         if (dados.length > 0) {
           const produto = dados[0]; // só pega o primeiro
 
-          resultDiv.textContent =
-            `Produto: ${produto.title}\n` +
-            `Avaliação: ${produto.rating}\n` +
-            `Número de Avaliações: ${produto.reviews}\n` +
-            `Imagem: ${produto.image}`;
+        document.getElementById("title").textContent = produto.title || "—";
+        document.getElementById("rating").textContent = produto.rating || "—";
+        document.getElementById("reviews").textContent = produto.reviews || "—";
+        document.getElementById("image").src = produto.image || "";
+
+        // depois que chegou os dados, exibe a tabela com resultados
+        table.style.display = "table";
+        
         } else {
           resultDiv.textContent = "Nenhum produto encontrado.";
         }
         
       } else {
-        console.error("Erro ao buscar dados da API:", ajax.statusText);
-      }
+        alert("Erro ao buscar dados: " + ajax.statusText);      }
   
 }
   }

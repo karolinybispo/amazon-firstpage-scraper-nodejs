@@ -8,15 +8,34 @@
   <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
+  <!-- Estrutura HTML para usuario inserir keyword e enviar -->
   <div class="container">
     <h1>Bem-vindo!</h1>
-    <p class="subtitle">Qual produto amazon deseja buscar hoje?</p>
+    <p class="subtitle">Qual produto da amazon deseja buscar hoje?</p>
     <input id="inputKeyword" placeholder="Digite o produto..." />
     <button type="submit" id="buttonSend">Buscar</button>
-    <div id="resultRequisicao">
-      <!-- Tabela de resultados será inserida aqui pelo JS -->
-    </div>
-  </div>
+     </div>
+
+    <!-- Tabela de resultados será inserida aqui -->
+    <table id="resultRequisicao">
+    <tr>
+      <td><strong>Título:</strong></td>
+      <td id="title"></td>
+    </tr>
+    <tr>
+      <td><strong>Rating:</strong></td>
+      <td id="rating"></td>
+    </tr>
+    <tr>
+      <td><strong>Reviews:</strong></td>
+      <td id="reviews"></td>
+    </tr>
+    <tr>
+      <td><strong>Image:</strong></td>
+      <td><img id="image" alt="imagem do produto"></td>
+    </tr>
+  </table>
+   
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
