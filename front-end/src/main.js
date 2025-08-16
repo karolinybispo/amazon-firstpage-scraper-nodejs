@@ -1,7 +1,5 @@
 // aqui eu escrevo o js puro para manipular o DOM
 
-import './style.css'
-
 const resultDiv = document.getElementById("resultRequisicao");
 const button = document.getElementById("buttonSend");
 const table = document.getElementById("resultRequisicao");
@@ -35,10 +33,10 @@ const table = document.getElementById("resultRequisicao");
         if (dados.length > 0) {
           const produto = dados[0]; // só pega o primeiro
 
+        document.getElementById("image").src = produto.image || "";
         document.getElementById("title").textContent = produto.title || "—";
         document.getElementById("rating").textContent = produto.rating || "—";
         document.getElementById("reviews").textContent = produto.reviews || "—";
-        document.getElementById("image").src = produto.image || "";
 
         // depois que chegou os dados, exibe a tabela com resultados
         table.style.display = "table";
