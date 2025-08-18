@@ -1,25 +1,26 @@
-import express from "express";
-import axios from "axios";
-import { JSDOM } from "jsdom";
+import express from "express"; // biblioteca para criar o servidor express
+import axios from "axios"; // biblioteca para fazer requisições HTTP a amazon
+import { JSDOM } from "jsdom"; // biblioteca para manipular o HTML como se fosse um navegador
+
 
 const app = express(); // criando servidor express
-const PORT = 3000; // porta do servidor
+const PORT = 3000; // definindo porta do servidor
 
 
-const cors = require("cors");
-app.use(cors({ origin: "*" }));
+const cors = require("cors"); // importando biblioteca cors
+app.use(cors({ origin: "*" })); // permitindo requisições de qualquer origem
 
 
 
-app.get("/api/scrape", async (req, res) => {
-  const keyword = req.query.keyword; 
+app.get("/api/scrape", async (req, res) => { //servidor escutando requisições na rota /api/scrape
+  const keyword = req.query.keyword;  // obtem a keyword da url e passa para a variável keyword
 
   try {
-    // Monta a URL da Amazon com a keyword
-    const url = `https://www.amazon.com/s?k=${encodeURIComponent(keyword)}`;
+    
+    const url = `https://www.amazon.com.br/s?k=${encodeURIComponent(keyword)}`; // Monta a URL da Amazon com a keyword
 
-    // Faz requisição do HTML da página
-    const response = await axios.get(url, {
+  
+    const response = await axios.get(url, { // 
       headers: {
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
@@ -29,7 +30,6 @@ app.get("/api/scrape", async (req, res) => {
     });
 
     // Usa JSDOM para manipular o HTML
-
     const dom = new JSDOM(response.data);
     const document = dom.window.document;
 
@@ -56,7 +56,7 @@ app.get("/api/scrape", async (req, res) => {
       const image = product.querySelector("img.s-image")?.src || null;
 
       if (title) {
-        // só adiciona se tiver título
+        // adiciona o produto ao array se o título existir
         products.push({
           title,
           rating,
@@ -68,14 +68,11 @@ app.get("/api/scrape", async (req, res) => {
 
     return res.json(products);
 
-  } catch (error) {
-    console.error('Erro ao buscar os dados da Amazon:', error);
-
-    // Enviar resposta com mais detalhes
-    res.status(500).json({
-      message: 'Erro ao buscar os dados da Amazon',
-      error: error.message, // mensagem do erro original
-      stack: process.env.NODE_ENV === 'production' ? undefined : error.stack, // stack trace em dev
+  } catch (err) {
+    const statusCode = err.response?.status || 500; // usa o da Amazon ou 500
+    res.status(statusCode).json({
+      error: err.message,
+      details: err.response?.data || null
     });
   }
 });
